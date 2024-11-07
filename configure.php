@@ -340,16 +340,20 @@ function determineSeparator(string $path): string
     return str_replace('/', DIRECTORY_SEPARATOR, $path);
 }
 
+// temp fix for WSL
 function replaceForWindows(): array
 {
-    return preg_split('/\\r\\n|\\r|\\n/', run('dir /S /B * | findstr /v /i .git\ | findstr /v /i \\vendor\\ | findstr /v /i ' . basename(__FILE__) . ' | findstr /r /i /M /F:/ ":author :vendor :package VendorName skeleton migration_table_name vendor_name vendor_slug author@domain.com"'));
+    $command = 'find . -type f ! -path "*/.git/*" ! -path "*/vendor/*" ! -path "*/.github/*" ' .
+               '| xargs grep -l -E ":author|:vendor|:package|VendorName|skeleton|migration_table_name|vendor_name|vendor_slug|author@domain.com"';
+    return explode(PHP_EOL, run($command));
 }
 
+// temp fix for WSL
 function replaceForAllOtherOSes(): array
 {
-    return explode(PHP_EOL, run('find ./* ./.github/* -name "vendor" -type d -prune \
-     -o -name "configure.php" -prune \
-     -o -type f -print0 | xargs -0 grep -E -r -l -i ":author|:vendor|:package|VendorName|skeleton|migration_table_name|vendor_name|vendor_slug|author@domain.com"'));
+    $command = 'find . -type f ! -path "*/.git/*" ! -path "*/vendor/*" ! -path "*/.github/*" ' .
+               '| xargs grep -l -E ":author|:vendor|:package|VendorName|skeleton|migration_table_name|vendor_name|vendor_slug|author@domain.com"';
+    return explode(PHP_EOL, run($command));
 }
 
 function removeDirectory($dir): void
