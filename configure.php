@@ -345,6 +345,7 @@ function replaceForWindows(): array
 {
     $command = 'find . -type f ! -path "*/.git/*" ! -path "*/vendor/*" ! -path "*/.github/*" ' .
                '| xargs grep -l -E ":author|:vendor|:package|VendorName|skeleton|migration_table_name|vendor_name|vendor_slug|author@domain.com"';
+
     return explode(PHP_EOL, run($command));
 }
 
@@ -353,6 +354,7 @@ function replaceForAllOtherOSes(): array
 {
     $command = 'find . -type f ! -path "*/.git/*" ! -path "*/vendor/*" ! -path "*/.github/*" ' .
                '| xargs grep -l -E ":author|:vendor|:package|VendorName|skeleton|migration_table_name|vendor_name|vendor_slug|author@domain.com"';
+
     return explode(PHP_EOL, run($command));
 }
 
