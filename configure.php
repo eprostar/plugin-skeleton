@@ -153,7 +153,7 @@ foreach ($files as $file) {
         str_contains($file, determineSeparator('src/Facades/Skeleton.php')) => rename($file, determineSeparator('./src/Facades/' . $className . '.php')),
         str_contains($file, determineSeparator('src/Commands/SkeletonCommand.php')) => rename($file, determineSeparator('./src/Commands/' . $className . 'Command.php')),
         str_contains($file, determineSeparator('src/Testing/TestsSkeleton.php')) => rename($file, determineSeparator('./src/Testing/Tests' . $className . '.php')),
-        str_contains($file, determineSeparator('database/migrations/create_modelName_table.php')) => rename($file, determineSeparator('./database/migrations/create_' . $modelNameLc . 's_table.php')),
+        str_contains($file, determineSeparator('database/migrations/create_modelNames_table.php')) => rename($file, determineSeparator('./database/migrations/create_' . $modelNameLc . 's_table.php')),
         str_contains($file, determineSeparator('database/seeders/SkeletonSeeder.php')) => rename($file, determineSeparator('./database/seeders/' . $modelName . 'Seeder.php')),
         str_contains($file, determineSeparator('database/factories/ModelNameFactory.php')) => rename($file, determineSeparator('./database/factories/' . $modelName . 'Factory.php')),
 //        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/' . $packageSlugWithoutPrefix . '.php')),
@@ -161,6 +161,8 @@ foreach ($files as $file) {
 
 
         // Resources
+        // rename folder
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName)),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/ResourceName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/' . $resourceName . '.php')),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/CreateModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/Create' . $modelName . '.php')),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/EditModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/Edit' . $modelName . '.php')),
