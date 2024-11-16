@@ -4,16 +4,14 @@ namespace VendorName\Skeleton\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-class ModelFactory extends Factory
+class ModelNameFactory extends Factory
 {
-    protected $model = YourModel::class;
+    protected $model = ModelName::class;
 
     public function definition()
     {
         return [
-
+            'name' => fake()->name,
         ];
     }
 }
-*/

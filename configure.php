@@ -25,7 +25,10 @@ $folderName = basename($currentDirectory);
 $packageName = ask('Package name', $folderName);
 $packageSlug = slugify($packageName);
 $packageSlugWithoutPrefix = removePrefix('filament-', $packageSlug);
+
 $modelName = ask('Model name', 'Model');
+$modelNameLc = lcfirst($modelName);
+
 $resourceName = ask('Resource name', $modelName . 'Resource');
 
 $className = titleCase($packageName);
@@ -130,6 +133,7 @@ foreach ($files as $file) {
         ':vendor_slug' => $vendorSlug,
         'VendorName' => $vendorNamespace,
         'ModelName' => $modelName,
+        'modelName' => $modelNameLc,
         'ResourceName' => $resourceName,
         ':package_name' => $packageName,
         ':package_slug' => $packageSlug,
@@ -149,9 +153,20 @@ foreach ($files as $file) {
         str_contains($file, determineSeparator('src/Facades/Skeleton.php')) => rename($file, determineSeparator('./src/Facades/' . $className . '.php')),
         str_contains($file, determineSeparator('src/Commands/SkeletonCommand.php')) => rename($file, determineSeparator('./src/Commands/' . $className . 'Command.php')),
         str_contains($file, determineSeparator('src/Testing/TestsSkeleton.php')) => rename($file, determineSeparator('./src/Testing/Tests' . $className . '.php')),
-        str_contains($file, determineSeparator('database/migrations/create_skeleton_table.php.stub')) => rename($file, determineSeparator('./database/migrations/create_' . titleSnake($packageSlugWithoutPrefix) . '_table.php.stub')),
-        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/' . $packageSlugWithoutPrefix . '.php')),
-        str_contains($file, determineSeparator('resources/lang/en/skeleton.php')) => rename($file, determineSeparator('./resources/lang/en/' . $packageSlugWithoutPrefix . '.php')),
+        str_contains($file, determineSeparator('database/migrations/create_modelName_table.php')) => rename($file, determineSeparator('./database/migrations/create_' . $modelNameLc . 's_table.php')),
+        str_contains($file, determineSeparator('database/seeders/SkeletonSeeder.php')) => rename($file, determineSeparator('./database/seeders/' . $modelName . 'Seeder.php')),
+        str_contains($file, determineSeparator('database/factories/ModelNameFactory.php')) => rename($file, determineSeparator('./database/factories/' . $modelName . 'Factory.php')),
+//        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/' . $packageSlugWithoutPrefix . '.php')),
+//        str_contains($file, determineSeparator('resources/lang/en/skeleton.php')) => rename($file, determineSeparator('./resources/lang/en/' . $packageSlugWithoutPrefix . '.php')),
+
+
+        // Resources
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/ResourceName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/' . $resourceName . '.php')),
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/CreateModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/Create' . $modelName . '.php')),
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/EditModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/Edit' . $modelName . '.php')),
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/ViewModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/View' . $modelName . '.php')),
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/ListModelNames.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/List' . $modelName . 's.php')),
+
         str_contains($file, 'README.md') => removeTag($file, 'delete'),
         default => [],
     };
