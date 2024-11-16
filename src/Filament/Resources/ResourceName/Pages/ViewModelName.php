@@ -2,9 +2,9 @@
 
 namespace VendorName\Skeleton\Filament\Resources\ResourceName\Pages;
 
-use VendorName\Skeleton\Filament\Resources\ResourceName;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
+use VendorName\Skeleton\Filament\Resources\ResourceName;
 
 class ViewModelName extends ViewRecord
 {

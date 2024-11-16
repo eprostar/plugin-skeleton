@@ -2,20 +2,10 @@
 
 namespace VendorName\Skeleton\Filament\Resources;
 
-use Closure;
 use Eprostar\EprostarHelper\Traits\HasTimestampColumns;
-use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\CreateResourceName;
-use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\EditResourceName;
-use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\ListResourceNames;
-use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\RecordPages\Locations;
-use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\ViewResourceName;
-use VendorName\Skeleton\Filament\Resources\ResourceName\TrashedResourceNames;
-use VendorName\Skeleton\Models\Modelname;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
 use Filament\Pages\SubNavigationPosition;
@@ -25,7 +15,10 @@ use Filament\Support\Enums\ActionSize;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Model;
+use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\CreateResourceName;
+use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\EditResourceName;
+use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\ListResourceNames;
+use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\ViewResourceName;
 
 // use App\Filament\Resources\ResourceName\RelationManagers;
 
