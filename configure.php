@@ -160,13 +160,12 @@ foreach ($files as $file) {
         //        str_contains($file, determineSeparator('resources/lang/en/skeleton.php')) => rename($file, determineSeparator('./resources/lang/en/' . $packageSlugWithoutPrefix . '.php')),
 
         // Resources
-        // rename folder
-        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName)),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/ResourceName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/' . $resourceName . '.php')),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/CreateModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/Create' . $modelName . '.php')),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/EditModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/Edit' . $modelName . '.php')),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/ViewModelName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/View' . $modelName . '.php')),
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/Pages/ListModelNames.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/Pages/List' . $modelName . 's.php')),
+        str_contains($file, determineSeparator('src/Filament/Resources/ResourceName')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName)),
 
         str_contains($file, 'README.md') => removeTag($file, 'delete'),
         default => [],

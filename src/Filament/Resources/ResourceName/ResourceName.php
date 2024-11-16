@@ -22,7 +22,7 @@ use VendorName\Skeleton\Filament\Resources\ResourceName\Pages\ViewResourceName;
 
 // use App\Filament\Resources\ResourceName\RelationManagers;
 
-class ModelNameResource extends Resource
+class ResourceName extends Resource
 {
     use HasTimestampColumns;
 
