@@ -25,6 +25,8 @@ $folderName = basename($currentDirectory);
 $packageName = ask('Package name', $folderName);
 $packageSlug = slugify($packageName);
 $packageSlugWithoutPrefix = removePrefix('filament-', $packageSlug);
+$modelName = ask('Model name', 'Model');
+$resourceName = ask('Resource name', $modelName . 'Resource');
 
 $className = titleCase($packageName);
 $className = ask('Class name', $className);
@@ -48,6 +50,8 @@ writeln("Vendor     : \e[0;36m$vendorName ($vendorSlug)\e[0m");
 writeln('Package    : ' . "\e[0;36m" . $packageSlug . ($description ? " <{$description}>" : '') . "\e[0m");
 writeln("Namespace  : \e[0;36m$vendorNamespace\\$className\e[0m");
 writeln("Class name : \e[0;36m$className\e[0m");
+writeln("Model name : \e[0;36m$modelName\e[0m");
+writeln("Resource   : \e[0;36m$resourceName\e[0m");
 writeln('---');
 writeln("\e[1;37mPackages & Utilities\e[0m");
 writeln('Larastan/PhpStan  : ' . ($usePhpStan ? "\e[0;32mYes" : "\e[0;31mNo") . "\e[0m");
@@ -125,6 +129,8 @@ foreach ($files as $file) {
         ':vendor_name' => $vendorName,
         ':vendor_slug' => $vendorSlug,
         'VendorName' => $vendorNamespace,
+        'ModelName' => $modelName,
+        'ResourceName' => $resourceName,
         ':package_name' => $packageName,
         ':package_slug' => $packageSlug,
         ':package_slug_without_prefix' => $packageSlugWithoutPrefix,
