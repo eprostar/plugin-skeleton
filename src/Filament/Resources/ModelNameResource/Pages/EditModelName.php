@@ -2,9 +2,9 @@
 
 namespace VendorName\Skeleton\Filament\Resources\ResourceName\Pages;
 
-use VendorName\Skeleton\Filament\Resources\ResourceName;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
+use VendorName\Skeleton\Filament\Resources\ResourceName;
 
 class EditModelName extends EditRecord
 {

@@ -2,9 +2,9 @@
 
 namespace VendorName\Skeleton\Filament\Resources\ResourceName\Pages;
 
-use VendorName\Skeleton\Filament\Resources\ResourceName;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use VendorName\Skeleton\Filament\Resources\ResourceName;
 
 class ListModelNames extends ListRecords
 {

@@ -156,9 +156,8 @@ foreach ($files as $file) {
         str_contains($file, determineSeparator('database/migrations/create_modelName_table.php')) => rename($file, determineSeparator('./database/migrations/create_' . $modelNameLc . 's_table.php')),
         str_contains($file, determineSeparator('database/seeders/SkeletonSeeder.php')) => rename($file, determineSeparator('./database/seeders/' . $modelName . 'Seeder.php')),
         str_contains($file, determineSeparator('database/factories/ModelNameFactory.php')) => rename($file, determineSeparator('./database/factories/' . $modelName . 'Factory.php')),
-//        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/' . $packageSlugWithoutPrefix . '.php')),
-//        str_contains($file, determineSeparator('resources/lang/en/skeleton.php')) => rename($file, determineSeparator('./resources/lang/en/' . $packageSlugWithoutPrefix . '.php')),
-
+        //        str_contains($file, determineSeparator('config/skeleton.php')) => rename($file, determineSeparator('./config/' . $packageSlugWithoutPrefix . '.php')),
+        //        str_contains($file, determineSeparator('resources/lang/en/skeleton.php')) => rename($file, determineSeparator('./resources/lang/en/' . $packageSlugWithoutPrefix . '.php')),
 
         // Resources
         str_contains($file, determineSeparator('src/Filament/Resources/ResourceName/ResourceName.php')) => rename($file, determineSeparator('./src/Filament/Resources/' . $resourceName . '/' . $resourceName . '.php')),
